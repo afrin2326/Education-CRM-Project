@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>iostream</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+</head>
+
+<body>
+   <!--header starts-->
+    <header>
+        <nav class="navbar navbar-expand-lg" style="background-color: #26086d;">
+
+
+
+            <div class="container text-white">
+                <a class="navbar-brand" href="/index"></a>
+                <img src="images/logo.png" alt="iostream programming logo" width="60" href="/index" />
+                <span class="h3 ms-2">iostream</span>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav ms-auto mb-2 mb-lg-0 me-4">
+                        <li class="nav-item">
+                            <a class="nav-link active text-white" aria-current="page" href="/index">Home</a>
+                        </li>
+                    </ul>
+
+                    <ul class="navbar-nav  mb-2 mb-lg-0 me-4">
+                        <li class="nav-item">
+                            <a class="nav-link active text-white" aria-current="page" href="/my-enrollments">My
+                                Enrollments</a>
+                        </li>
+                    </ul>
+
+                    <ul class="navbar-nav  mb-2 mb-lg-0 me-4">
+                        <li class="nav-item">
+
+                            <a class="nav-link active text-white" aria-current="page" href="/user-profile">
+                                <i class="bi bi-person" style="font-size: 2rem;"></i>Hello Afrin</a>
+                        </li>
+                    </ul>
+                    <a href="/login" class="btn btn-outline-danger"> Logout </a>
+
+                </div>
+            </div>
+        </nav>
+
+    </header>
+    <!--header ends-->
+
+    <!--main content starts-->
+
+    <main class="container-fluid">
+
+       
+        <!--content-->
+        <h3 class="text-center mt-4"> My Courses</h3>
+
+            
+
+    </main>
+
+    <!--main content ends-->
+
+    
+
+    <!--footer starts-->
+     <div th:replace="~{fragments/footer :: crm-footer}"></div>
+    <!--footer ends-->
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>

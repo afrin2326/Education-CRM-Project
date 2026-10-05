@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>iostream</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+</head>
+<body>
+    <!--header starts-->
+    <div th:if="${sessionUser != null}">
+        <div th:replace="~{fragments/user-header :: crm-userheader}"></div>
+    </div>
+    <div th:unless="${sessionUser != null}">
+        <div th:replace="~{fragments/header :: crm-header}"></div>
+    </div>
+    <!--header ends-->
+
+    <!--main content starts-->
+    <main class="container-fluid">
+        <!--banner-->
+        <section>
+            <img src="images/it_banner.png" alt="iostream banner" class="img-fluid w-100"/>
+        </section>
+
+        <!--content-->
+        <section class="container py-4 bg-light">
+            <h3 class="text-center mb-3">Our Courses</h3>
+
+            <!--courses-->
+            <div class="row g-4 py-3">
+                <!-- Dynamic course cards from database -->
+                <div th:each="course : ${courseList}" class="col-lg-4 col-md-6 col-sm-12 mb-4">
+                    <div class="card h-100">
+                        <!-- Course Image -->
+                        <img th:src="${course.imageUrl}" 
+                             th:alt="${course.name}" 
+                             class="card-img-top" 
+                             style="height: 200px; object-fit: cover;">
+                        
+                        <!-- Course Body -->
+                        <div class="card-body">
+                            <h5 class="card-title" th:text="${course.name}"></h5>
+                            <p class="card-text" th:text="${course.description}"></p>
+                            
+                            <!-- Price Section -->
+                            <div class="d-flex justify-content-between align-items-center mb-2">
+                                <span class="text-decoration-line-through text-muted" 
+                                      th:text="'৳' + ${course.originalPrice}">
+                                </span>
+                                <span class="h5 text-danger" 
+                                      th:text="'৳' + ${course.discountPrice}">
+                                </span>
+                            </div>
+                            
+                            <!-- Buy Button - Conditional based on login -->
+                            <div class="d-grid">
+                                <div th:if="${sessionUser == null}">
+                                    <a th:href="@{/login}" class="btn btn-outline-primary w-100">
+                                        Login to Buy
+                                    </a>
+                                </div>
+                                <div th:unless="${sessionUser == null}">
+                                    <button class="btn btn-primary w-100">Buy Now</button>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Card Footer -->
+                        <div class="card-footer text-body-secondary">
+                            <small th:text="'Updated: ' + ${course.updateOn}"></small>
+                        </div>
+                    </div>
+                </div>
+                <!-- End of dynamic course cards -->
+                
+                <!-- If no courses found -->
+                <div th:if="${#lists.isEmpty(courseList)}" class="col-12 text-center">
+                    <div class="alert alert-info" role="alert">
+                        No courses available at the moment. Please check back later.
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    <!--main content ends-->
+
+    <!--footer starts-->
+    <div th:replace="~{fragments/footer :: crm-footer}"></div>
+    <!--footer ends-->
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+        crossorigin="anonymous"></script>
+</body>
+</html>
